@@ -47,6 +47,9 @@ port=127.0.0.1:9001
 
 Restart apache and supervisord for these changes to take effect
 
+Screenshot
+----------
+https://github.com/luxbet/supervisorui/wiki
 
 Authors
 -------
