@@ -1,0 +1,14 @@
+<?php
+/**
+ * Array of servers hosting supervisord running the supervisorui that we wish to connect to
+ */
+return array(
+	array(
+		'ip' => '192.168.1.1',
+		'name' => 'server1',
+	),
+	array(
+		'ip' => '192.168.1.2',
+		'name' => 'server2',
+	),
+);

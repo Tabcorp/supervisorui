@@ -1,0 +1,5 @@
+.idea
+.hg
+.hgignore
+config.php
+silex.phar
