@@ -3,7 +3,7 @@ Supervisor multi-server dashboard
 
 Introduction
 ------------
-This is a simple, quick and dirty dashboard that gives you an at-a-glance look at the state of all your supervisor using webservers. Also provides the ability to stop and start individual processes. It uses
+This is a simple, quick and dirty dashboard that gives you an at-a-glance look at the state of all your [supervisor](http://supervisord.org/) using webservers. Also provides the ability to stop and start individual processes. It uses
  
   * [Silex](http://silex.sensiolabs.org/)
   * [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
