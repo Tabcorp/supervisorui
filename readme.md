@@ -22,8 +22,7 @@ Configuration
 -------------
 Copy config.php.dist as config.php and edit as appropriate.
 
-Download silex.phar and put it in the top level of this application:
-wget http://silex.sensiolabs.org/get/silex.phar
+Download silex.phar and put it in the top level of this application.
 
 Apache config changes:
 
