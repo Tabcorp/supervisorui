@@ -18,7 +18,6 @@
 				id: 0,
 				name: "",
 				ip: "",
-				group: "",
 				statecode: 0,
 				statename: '',
 				version: '',
@@ -49,7 +48,7 @@
 			this.set("runningServices", 0);
 			this.services.each(this.addOne);
 			this.countServices();
-    	},
+		},
 
 		countServices: function() {
 			this.set("totalServices", 0);
@@ -61,11 +60,7 @@
 				}
 			});
 			console.log("total: "+this.get("totalServices")+" running: "+ this.get("runningServices"));
-		},
-
-        toggleSummary: function() {
-            alert('toggled!');
-        }
+		}
 	});
 
 	var SupervisorServerList = Backbone.Collection.extend({
@@ -79,16 +74,16 @@
 
 	var SupervisorServerView = Backbone.View.extend({
 
-        summaryShown: true,
+		summaryShown: true,
 
 		tagName: "div",
 
 		template: _.template($('#server-template').html()),
 
-        events: {
-     		"click .server-summary" : "toggleSummary",
-            "click .server-details" : "toggleSummary"
-      	},
+		events: {
+			"click .server-summary" : "toggleSummary",
+			"click .server-details" : "toggleSummary"
+		},
 
 		initialize: function(options) {
 			this.render = _.bind(this.render, this);
@@ -97,10 +92,10 @@
 			this.model.bind("change:runningServices", this.updateServiceCounts, this);
 		},
 
-        toggleSummary: function() {
-            this.$el.find('.server-summary').toggle();
-            this.$el.find('.server-details').toggle();
-        },
+		toggleSummary: function() {
+			this.$el.find('.server-summary').toggle();
+			this.$el.find('.server-details').toggle();
+		},
 
 		render: function() {
 			// hack: only fetch the services once we have fetched the server details
@@ -242,7 +237,7 @@
 
 	    addAll: function() {
 			SupervisorServers.each(this.addOne);
-    	}
+		}
 
 	});
 
