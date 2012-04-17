@@ -4,6 +4,7 @@ Supervisor multi-server dashboard
 Introduction
 ------------
 This is a simple, quick and dirty dashboard that gives you an at-a-glance look at the state of all your supervisor using webservers. Also provides the ability to stop and start individual processes. It uses
+ 
   * [Silex](http://silex.sensiolabs.org/)
   * [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
   * [jQuery](http://jquery.com/)
@@ -26,6 +27,7 @@ wget http://silex.sensiolabs.org/get/silex.phar
 
 Apache config changes:
 
+```apache
 Alias /supervisorui/ "/path/to/supervisorui/web/"
 
 <Directory "/path/to/supervisorui/web">
@@ -33,17 +35,19 @@ Alias /supervisorui/ "/path/to/supervisorui/web/"
 	Deny from all
 	Allow from 127.0.0.1 <other private ip's here>
 </Directory>
+```
 
-Either enable .htaccess overrides or put the contents of the web/.htaccess file into the above <Directory> block.
+Either enable .htaccess overrides or put the contents of the web/.htaccess file into the above `<Directory>` block.
 
-Supervisor changes:
+Supervisor (/etc/supervisord.conf) changes to enable XML-RPC access:
 
+```ini
 [inet_http_server]         ; inet (TCP) server disabled by default
 port=127.0.0.1:9001
+```
 
 Restart apache and supervisord for these changes to take effect
 
-Screenshot
 
 Authors
 -------
