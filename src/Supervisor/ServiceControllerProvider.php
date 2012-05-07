@@ -7,8 +7,7 @@ namespace Supervisor;
 
 use Silex\Application,
 	Silex\ControllerProviderInterface,
-	Silex\ControllerCollection,
-	Symfony\Component\HttpFoundation\Request;
+	Silex\ControllerCollection;
 
 class ServiceControllerProvider implements ControllerProviderInterface {
 
@@ -19,13 +18,13 @@ class ServiceControllerProvider implements ControllerProviderInterface {
 
 		$servers = require_once(__DIR__.'/../../config.php');
 
-		$controllers->get('/{server}', function($server) use ($supervisor) {
+		$controllers->get('/{server}', function($server) use ($supervisor, $app) {
 			//$server_ip = $servers[$server]['ip'];
 			$services = $supervisor->getAllProcessInfo('127.0.0.1');
-			return json_encode($services);
+			return $app->json($services);
 		});
 
-		$controllers->post('/{server}/{service}', function (Request $request, $server, $service) use ($supervisor, $servers) {
+		$controllers->post('/{server}/{service}', function (Request $request, $server, $service) use ($supervisor, $servers, $app) {
 			$server_ip = $servers[$server]['ip'];
 
 			if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
@@ -54,15 +53,17 @@ class ServiceControllerProvider implements ControllerProviderInterface {
 				));
 			}
 
-			return json_encode($result);
+			return $app->json($result);
 		});
 
-		$controllers->get('/{server}/{service}', function($server, $service) use ($supervisor, $servers) {
+		$controllers->get('/{server}/{service}', function($server, $service) use ($supervisor, $servers, $app) {
 			$server_ip = $servers[$server]['ip'];
 
-			return json_encode($supervisor->getProcessInfo('127.0.0.1', $service));
+			return $app->json($supervisor->getProcessInfo('127.0.0.1', $service));
 		});
 
 		return $controllers;
 	}
+
+
 }

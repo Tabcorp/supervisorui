@@ -24,7 +24,7 @@ class ServerControllerProvider implements ControllerProviderInterface {
 
 		$controllers->get('/list.{_format}', function ($_format) use ($supervisor, $app, $servers) {
 			if ($_format == 'json') {
-				return json_encode($servers);
+				return $app->json($servers);
 			} else {
 				// use a closure to avoid leaking any vars into the template that we don't explicitly want
 				return call_user_func(function() use ($app) {
@@ -48,7 +48,7 @@ class ServerControllerProvider implements ControllerProviderInterface {
 				), $supervisor->getState('127.0.0.1'),
 				$servers[$server_id]
 			);
-			return json_encode($details);
+			return $app->json($details);
 		});
 
 		return $controllers;
