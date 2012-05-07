@@ -7,7 +7,8 @@ namespace Supervisor;
 
 use Silex\Application,
 	Silex\ControllerProviderInterface,
-	Silex\ControllerCollection;
+	Silex\ControllerCollection,
+	Symfony\Component\HttpFoundation\Request;
 
 class ServiceControllerProvider implements ControllerProviderInterface {
 
