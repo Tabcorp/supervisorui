@@ -235,7 +235,7 @@
 			this.$("#server-list").append(view.render().el);
 		},
 
-	    addAll: function() {
+		addAll: function() {
 			SupervisorServers.each(this.addOne);
 		}
 
